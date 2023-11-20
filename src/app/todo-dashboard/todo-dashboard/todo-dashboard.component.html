@@ -1,1 +1,2 @@
-<p>todo-dashboard works!</p>
+<h1 [routerLink]="['/main']">Todo</h1>
+<app-todo *ngFor="let todoEl of todoList" [todo]="todoEl"></app-todo>
