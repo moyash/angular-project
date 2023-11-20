@@ -5,9 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthModule } from './auth/auth.module';
-import { TodoDashboardModule } from './todo-dashboard/todo-dashboard.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ErrorMessageDirective } from './common/directive/error-message.directive';
 
 @NgModule({
   declarations: [AppComponent, PageNotFoundComponent],
