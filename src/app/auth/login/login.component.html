@@ -4,11 +4,14 @@
     <div class="valid-input">
       <input
         type="text"
-        id="loginId"
-        formControlName="loginId"
-        placeholder="login id"
+        id="username"
+        formControlName="username"
+        placeholder="username"
       />
-      <div [ngClass]="{ 'error-icon': getLoginIdInValid }"></div>
+      <div
+        [appErrorMessage]="getUsernameErrorMessage"
+        [ngClass]="{ 'error-icon': getUsernameInValid }"
+      ></div>
       <!-- <div class="errorMessage">
         <div [ngClass]="{ 'error-icon': getLoginIdInValid }">
           <span *ngIf="loginForm.get('loginId')?.errors?.['required']">
@@ -27,7 +30,10 @@
         formControlName="password"
         placeholder="password"
       />
-      <div [ngClass]="{ 'error-icon': getPasswordInValid }"></div>
+      <div
+        [appErrorMessage]="getPasswordErrorMessage"
+        [ngClass]="{ 'error-icon': getPasswordInValid }"
+      ></div>
       <!-- <div class="errorMessage">
         <div
           *ngIf="
@@ -44,6 +50,6 @@
         </div>
       </div> -->
     </div>
-    <button type="submit">LOGIN</button>
+    <button type="submit" [disabled]="loginForm.invalid">LOGIN</button>
   </form>
 </div>

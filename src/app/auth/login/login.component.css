@@ -12,6 +12,10 @@
   transform: translate(-50%, -90%);
 }
 
+.container h1 {
+  padding-bottom: 30px;
+}
+
 form {
   display: flex;
   align-items: center;
@@ -25,7 +29,6 @@ form {
   position: relative;
   width: 400px;
   padding: 0 20px 40px 20px;
-  /* border: 1px solid black; */
 }
 
 input {
@@ -39,7 +42,6 @@ input {
 
 input:focus {
   outline: none;
-  outline-botom: 1px;
 }
 
 input.ng-touched.ng-invalid {
@@ -56,16 +58,15 @@ input.ng-touched.ng-invalid {
   font-size: 2rem;
   position: absolute;
   right: 30px;
-  top: 15%;
+  top: 5%;
   /* background-color: green; */
 }
 
 .errorMessage {
-  display: block;
-  height: 30px;
   color: #ff0033;
-  font-size: 0.9rem;
-  padding-bottom: 15px;
+  font-size: 1.5rem;
+  white-space: nowrap;
+  text-indent: 40px;
 }
 
 button {

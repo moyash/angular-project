@@ -11,7 +11,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
   // ログインフォーム
   loginForm = new FormGroup({
-    loginId: new FormControl('', [
+    username: new FormControl('', [
       Validators.required,
       Validators.maxLength(64),
     ]),
@@ -39,12 +39,20 @@ export class LoginComponent implements OnInit {
     console.log('after login', this.authService.isLoggedIn);
   }
 
-  get getLoginIdInValid() {
-    // return true;
+  get getUsernameInValid() {
     return (
-      !this.loginForm.get('loginId')?.valid &&
-      this.loginForm.get('loginId')?.touched
+      !this.loginForm.get('username')?.valid &&
+      this.loginForm.get('username')?.touched
     );
+  }
+
+  get getUsernameErrorMessage() {
+    var errorMessage = '';
+    if (this.loginForm.get('username')?.errors?.['required'])
+      errorMessage = 'Enter Username';
+    if (this.loginForm.get('username')?.errors?.['maxlength'])
+      errorMessage = 'Please enter no more than 64 characters.';
+    return errorMessage;
   }
 
   get getPasswordInValid() {
@@ -52,5 +60,14 @@ export class LoginComponent implements OnInit {
       !this.loginForm.get('password')?.valid &&
       this.loginForm.get('password')?.touched
     );
+  }
+
+  get getPasswordErrorMessage() {
+    var errorMessage = '';
+    if (this.loginForm.get('password')?.errors?.['required'])
+      errorMessage = 'Enter Password';
+    if (this.loginForm.get('password')?.errors?.['maxlength'])
+      errorMessage = 'Please enter no more than 64 characters.';
+    return errorMessage;
   }
 }
