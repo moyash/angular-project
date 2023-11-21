@@ -1,1 +1,7 @@
-<p>todo-list works!</p>
+<div class="container">
+  <app-todo
+    *ngFor="let todoEl of todoList"
+    [todo]="todoEl"
+    [routerLink]="[todoEl.id]"
+  ></app-todo>
+</div>
