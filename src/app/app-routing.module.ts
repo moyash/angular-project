@@ -8,7 +8,7 @@ import { TodoDashboardComponent } from './todo-dashboard/todo-dashboard/todo-das
 const routes: Routes = [
   {
     path: '',
-    component: TodoDashboardComponent /*, canActivate: [authGuard]*/,
+    component: AppComponent /*, canActivate: [authGuard]*/,
   },
   // {
   //   path: 'main',
@@ -21,14 +21,14 @@ const routes: Routes = [
   //   path: 'login',
   //   loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   // },
-  // {
-  //   path: 'todo',
-  //   loadChildren: () =>
-  //     import('./todo-dashboard/todo-dashboard.module').then(
-  //       (m) => m.TodoDashboardModule
-  //     ),
-  // },
-  // { path: '**', component: PageNotFoundComponent },
+  {
+    path: 'todo',
+    loadChildren: () =>
+      import('./todo-dashboard/todo-dashboard.module').then(
+        (m) => m.TodoDashboardModule
+      ),
+  },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({

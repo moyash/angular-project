@@ -1,17 +1,21 @@
+#todo-dashboard {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
 .container {
-  position: absolute;
-  top: 10%;
-  left: 50%;
-  transform: translate(-50%, 0%);
   display: flex;
   justify-content: space-between;
   border: 1px solid black;
-  width: 1500px;
-  height: 800px;
+  width: 70%;
+  margin: 100px 0 60px 0;
+  height: 65vh;
 }
 
 .todo-list {
   width: 40%;
+  height: auto;
   border: 1px solid green;
   border-radius: 10px;
   overflow-y: scroll;

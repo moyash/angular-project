@@ -1,0 +1,32 @@
+<div class="container">
+  <form [formGroup]="editForm" (ngSubmit)="onEditDone()">
+    <div class="wrapper">
+      <label for="title">Title</label>
+      <input id="title" type="text" formControlName="title" />
+    </div>
+    <div class="wrapper">
+      <label for="author">Author</label>
+      <input id="author" type="text" formControlName="author" />
+    </div>
+    <div class="wrapper">
+      <label for="content">Content</label>
+      <textarea id="content" formControlName="content"></textarea>
+    </div>
+    <div class="wrapper">
+      <label for="status">Status</label>
+      <select id="status" formControlName="status">
+        <option value="0" selected>未着手</option>
+        <option value="1">進行中</option>
+        <option value="2">完了</option>
+        <option value="3">保留</option>
+        <option value="4">取消</option>
+      </select>
+    </div>
+    <div class="button-container">
+      <button type="submit" class="edit" [disabled]="!editForm.valid">
+        Edit
+      </button>
+      <button class="cancel" (click)="onEditCancel()">Cancel</button>
+    </div>
+  </form>
+</div>
