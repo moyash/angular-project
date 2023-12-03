@@ -1,18 +1,27 @@
-import { Injectable } from '@angular/core';
-import { Todo } from './Todo.interface';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, Subject, map, tap } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { Todo } from "./Todo.interface";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { BehaviorSubject, Subject, map, tap } from "rxjs";
+import { TodoStatus } from "../constants/enums/todo-status.enum";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class TodoService {
-  URL: string = 'http://localhost:3000';
+  URL: string = "http://localhost:3000";
 
   todoListSub = new BehaviorSubject<Todo[]>([]);
 
   isEditSubject = new Subject<boolean>();
   isEditShow$ = this.isEditSubject.asObservable();
+
+  currentTodo: Todo = {
+    id: "",
+    title: "",
+    author: "",
+    content: "",
+    status: TodoStatus.NotStarted,
+  };
 
   constructor(private http: HttpClient) {}
 
@@ -42,14 +51,14 @@ export class TodoService {
   }
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    headers: new HttpHeaders({ "Content-Type": "application/json" }),
   };
 
   editTodo(id: string, target: Todo) {
     console.log(id, target, `${this.URL}/${id}`);
     return this.http.put(`${this.URL}/${id}`, target, this.httpOptions).pipe(
       tap((items) => {
-        console.log('edit item :', items);
+        console.log("edit item :", items);
       })
     );
   }

@@ -23,7 +23,8 @@
   <button (click)="onEdit()">Edit</button>
   <button>Delete</button>
 </div>
+<router-outlet></router-outlet>
 
-<div *ngIf="isShowEditPanel">
-  <app-todo-edit [editTodo]="todo"></app-todo-edit>
+<div>
+  <!-- <app-todo-edit [editTodo]="todo"></app-todo-edit> -->
 </div>

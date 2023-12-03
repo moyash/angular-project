@@ -1,25 +1,27 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
-import { TodoDashboardComponent } from './todo-dashboard/todo-dashboard.component';
-import { todoListResolver } from './todo.resolver';
-import { authGuard } from '../auth/auth.guard';
-import { TodoDetailComponent } from './todo-detail/todo-detail.component';
-import { TodoEditComponent } from './todo-edit/todo-edit.component';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { RouterModule, Routes } from "@angular/router";
+import { TodoDashboardComponent } from "./todo-dashboard/todo-dashboard.component";
+import { todoListResolver } from "./todo.resolver";
+import { authGuard } from "../auth/auth.guard";
+import { TodoDetailComponent } from "./todo-detail/todo-detail.component";
+import { TodoEditComponent } from "./todo-edit/todo-edit.component";
+import { editCanDeactivateGuard } from "./guard/edit-can-deactivate.guard";
 
 const todoRoutes: Routes = [
   {
-    path: '',
+    path: "",
     component: TodoDashboardComponent /*canActivate: [authGuard]*/,
     resolve: { todo: todoListResolver },
     children: [
       {
-        path: ':id',
+        path: ":id",
         component: TodoDetailComponent,
         children: [
           {
-            path: 'edit',
+            path: "edit",
             component: TodoEditComponent,
+            canDeactivate: [editCanDeactivateGuard],
           },
         ],
       },

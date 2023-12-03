@@ -3,14 +3,15 @@
   width: 400px;
   height: auto;
   border: 1px solid black;
-  transform: translate(-80%, -70%);
+  transform: translate(10%, -70%);
   background-color: #fefefe;
   border: 1px solid #000;
   border-radius: 20px;
+  padding: 10px 0;
 }
 
 .container label {
-  width: 40%;
+  width: 100px;
   margin: 10px;
 }
 
@@ -21,7 +22,13 @@
 }
 
 .container textarea {
-  width: 60%;
+  min-width: 60%;
+  max-width: 60%;
+  margin: 10px;
+}
+
+.container select {
+  width: 20%;
   margin: 10px;
 }
 
