@@ -76,6 +76,7 @@ export class TodoEditComponent implements OnInit {
       status: status,
     };
     this.todoService.editTodo(id, target).subscribe((res) => {});
+    this.isCanceled = false;
     this.router.navigate(["/todo", id]);
   }
 
@@ -91,7 +92,14 @@ export class TodoEditComponent implements OnInit {
     if (this.todo?.title !== this.editForm.value.title) isChanged = true;
     if (this.todo?.author !== this.editForm.value.author) isChanged = true;
     if (this.todo?.content !== this.editForm.value.content) isChanged = true;
-    if (this.todo?.status !== this.editForm.value.status) isChanged = true;
+    if (this.todo?.status.toString() !== this.editForm.value.status)
+      isChanged = true;
+
+    console.log(this.todo?.title, this.editForm.value.title);
+    console.log(this.todo?.author, this.editForm.value.author);
+    console.log(this.todo?.content, this.editForm.value.content);
+    console.log(this.todo?.status, this.editForm.value.status);
+    console.log(isChanged, this.isCanceled);
 
     if (isChanged && this.isCanceled)
       return this.dialogService.confirm("変更を取り消しますか？");
