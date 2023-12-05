@@ -21,10 +21,6 @@
   <div class="content">Content: {{ todo?.content }}</div>
 
   <button (click)="onEdit()">Edit</button>
-  <button>Delete</button>
+  <button (click)="onDelete()">Delete</button>
 </div>
 <router-outlet></router-outlet>
-
-<div>
-  <!-- <app-todo-edit [editTodo]="todo"></app-todo-edit> -->
-</div>

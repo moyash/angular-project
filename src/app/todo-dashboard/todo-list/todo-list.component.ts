@@ -1,23 +1,29 @@
-import { Component, OnInit } from '@angular/core';
-import { Todo } from '../Todo.interface';
-import { TodoService } from '../todo.service';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Todo } from "../Todo.interface";
+import { TodoService } from "../todo.service";
+import { ActivatedRoute } from "@angular/router";
+import { Subscription } from "rxjs";
 
 @Component({
-  selector: 'app-todo-list',
-  templateUrl: './todo-list.component.html',
-  styleUrls: ['./todo-list.component.css'],
+  selector: "app-todo-list",
+  templateUrl: "./todo-list.component.html",
+  styleUrls: ["./todo-list.component.css"],
 })
-export class TodoListComponent implements OnInit {
+export class TodoListComponent implements OnInit, OnDestroy {
   todoList: Todo[] = [];
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private todoService: TodoService
-  ) {}
+  subscription: Subscription;
+
+  constructor(private activatedRoute: ActivatedRoute) {
+    this.subscription = Subscription.EMPTY;
+  }
 
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe(({ todo }) => {
+    this.subscription = this.activatedRoute.data.subscribe(({ todo }) => {
       this.todoList = todo;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

@@ -12,9 +12,6 @@ export class TodoService {
 
   todoListSub = new BehaviorSubject<Todo[]>([]);
 
-  isEditSubject = new Subject<boolean>();
-  isEditShow$ = this.isEditSubject.asObservable();
-
   currentTodo: Todo = {
     id: "",
     title: "",
@@ -24,10 +21,6 @@ export class TodoService {
   };
 
   constructor(private http: HttpClient) {}
-
-  changeEditStatus(state: boolean) {
-    this.isEditSubject.next(state);
-  }
 
   setTodoList(todoList: Todo[]) {
     this.todoListSub.next(todoList);
@@ -50,6 +43,12 @@ export class TodoService {
     return tmp.find((e) => e.id === id);
   }
 
+  getMaxIndex(): number {
+    var tmp: Todo[] = [];
+    this.todoListSub.subscribe((items) => (tmp = items));
+    return +tmp[tmp.length - 1].id;
+  }
+
   httpOptions = {
     headers: new HttpHeaders({ "Content-Type": "application/json" }),
   };
@@ -61,5 +60,15 @@ export class TodoService {
         console.log("edit item :", items);
       })
     );
+  }
+
+  createTodo(target: Todo) {
+    console.log("create target :", target);
+    return this.http.post(this.URL, target, this.httpOptions);
+  }
+
+  deleteTodo(id: string) {
+    console.log("delete todo", id);
+    return this.http.delete(`${this.URL}/${id}`, this.httpOptions);
   }
 }

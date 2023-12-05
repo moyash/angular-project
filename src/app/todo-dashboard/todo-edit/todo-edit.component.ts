@@ -52,6 +52,7 @@ export class TodoEditComponent implements OnInit {
     private route: ActivatedRoute,
     private dialogService: DialogService
   ) {
+    this.routerSubscription = Subscription.EMPTY;
     this.router.routeReuseStrategy.shouldReuseRoute = () => {
       return false;
     };

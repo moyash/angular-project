@@ -18,21 +18,24 @@ export class TodoDetailComponent implements OnInit, OnDestroy {
     content: "",
     status: TodoStatus.NotStarted,
   };
+  id: string = "";
   routerSubscription: Subscription;
-  private subscription: Subscription;
+  subscription: Subscription;
 
   constructor(
     private route: ActivatedRoute,
     private todoService: TodoService,
     private router: Router
   ) {
-    this.subscription = this.todoService.isEditShow$.subscribe((state) => {});
+    this.routerSubscription = Subscription.EMPTY;
+    this.subscription = Subscription.EMPTY;
   }
+
   ngOnInit(): void {
     this.routerSubscription = this.route.params.subscribe((params: Params) => {
       console.log("detail params:", params);
-      const id = params["id"];
-      this.todo = this.todoService.getTodo(id);
+      this.id = params["id"];
+      this.todo = this.todoService.getTodo(this.id);
     });
   }
 
@@ -54,7 +57,13 @@ export class TodoDetailComponent implements OnInit, OnDestroy {
     });
   }
 
+  onDelete() {
+    this.subscription = this.todoService.deleteTodo(this.id).subscribe();
+    this.router.navigate(["todo"]);
+  }
+
   ngOnDestroy(): void {
+    this.subscription.unsubscribe();
     this.routerSubscription.unsubscribe();
   }
 }
