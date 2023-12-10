@@ -17,6 +17,13 @@ const routes: Routes = [
         (m) => m.MainDashboardModule
       ),
   },
+  {
+    path: "homepage",
+    loadChildren: () =>
+      import("./homepage-dashboard/homepage-dashboard.module").then(
+        (m) => m.HomepageDashboardModule
+      ),
+  },
   // {
   //   path: "login",
   //   loadChildren: () => import("./auth/auth.module").then((m) => m.AuthModule),

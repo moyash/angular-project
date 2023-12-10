@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Todo } from "./Todo.interface";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { BehaviorSubject, Subject, map, tap } from "rxjs";
+import { BehaviorSubject, Subject, catchError, map, take, tap } from "rxjs";
 import { TodoStatus } from "../constants/enums/todo-status.enum";
 
 @Injectable({
@@ -33,6 +33,9 @@ export class TodoService {
       }),
       tap((items) => {
         this.setTodoList(items);
+      }),
+      catchError((err) => {
+        throw "error in source. Detail: " + err;
       })
     );
   }

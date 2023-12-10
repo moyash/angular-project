@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Todo } from "../Todo.interface";
 import { TodoService } from "../todo.service";
-import { ActivatedRoute } from "@angular/router";
-import { Subscription } from "rxjs";
+import { ActivatedRoute, Router } from "@angular/router";
+import { Subscription, catchError, take, tap } from "rxjs";
 
 @Component({
   selector: "app-todo-list",
