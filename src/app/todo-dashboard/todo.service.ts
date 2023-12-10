@@ -3,12 +3,13 @@ import { Todo } from "./Todo.interface";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Subject, catchError, map, take, tap } from "rxjs";
 import { TodoStatus } from "../constants/enums/todo-status.enum";
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: "root",
 })
 export class TodoService {
-  URL: string = "http://localhost:3000";
+  URL: string = environment.apiUrl;
 
   todoListSub = new BehaviorSubject<Todo[]>([]);
 
