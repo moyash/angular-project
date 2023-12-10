@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-todo-frontend": {
+    "angular-project-frontend": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-todo-frontend",
+            "outputPath": "dist/angular-project-frontend",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -59,10 +59,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "angular-todo-frontend:build:production"
+              "browserTarget": "angular-project-frontend:build:production"
             },
             "development": {
-              "browserTarget": "angular-todo-frontend:build:development"
+              "browserTarget": "angular-project-frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -70,7 +70,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-todo-frontend:build"
+            "browserTarget": "angular-project-frontend:build"
           }
         },
         "test": {
