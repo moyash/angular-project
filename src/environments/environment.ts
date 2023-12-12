@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: "https://52.193.192.32",
+  apiUrl: "//api.sk-angular-project",
 };
