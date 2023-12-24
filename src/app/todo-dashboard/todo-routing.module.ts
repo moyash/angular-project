@@ -12,7 +12,8 @@ import { TodoCreateComponent } from "./todo-create/todo-create.component";
 const todoRoutes: Routes = [
   {
     path: "",
-    component: TodoDashboardComponent /*canActivate: [authGuard]*/,
+    component: TodoDashboardComponent,
+    // canActivate: [authGuard],
     resolve: { todo: todoListResolver },
     runGuardsAndResolvers: "always",
     children: [

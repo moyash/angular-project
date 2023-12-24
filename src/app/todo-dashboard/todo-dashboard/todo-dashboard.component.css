@@ -1,47 +1,94 @@
+.title {
+  font-size: 30px;
+  margin: 10px;
+}
+
+.title a {
+  text-decoration: none;
+  color: black;
+}
+
 #todo-dashboard {
   display: flex;
   justify-content: center;
+  align-items: center;
   position: relative;
+  width: auto;
 }
 
 .container {
   display: flex;
   justify-content: space-between;
   border: 1px solid black;
-  width: 70%;
-  margin: 100px 0 60px 0;
-  height: 43rem;
+  height: 85vh;
+  position: relative;
+}
+
+.side-container {
+  width: 35%;
+  height: 100%;
+  border: 1px solid green;
+  border-radius: 10px;
+  position: relative;
+}
+
+.pagination {
+  height: 12%;
+  border: 1px black solid;
+  border-radius: 10px;
+}
+
+.pagination select {
+  margin: 5px 0 0 15px;
+  border: 1px solid black;
+}
+
+.page-select {
+  display: flex;
+  margin: 10px;
+}
+
+.page-index {
+  margin-left: 5px;
+  width: 35px;
+  height: 35px;
+  border: 1px solid black;
+  border-radius: 50%;
+  text-align: center;
+  cursor: pointer;
+  font-size: 1.2rem;
 }
 
 .list-container {
-  width: 40%;
-  height: auto;
-  border: 1px solid green;
-  border-radius: 10px;
+  height: 88%;
   overflow-y: scroll;
 }
 
 .main-container {
-  width: 60%;
+  width: 65%;
   border: 1px solid red;
   border-radius: 10px;
   height: auto;
+  padding: 30px;
 }
 
 .todo-create {
   cursor: pointer;
-  width: 10rem;
+  width: 9rem;
+  height: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid black;
   border-radius: 20px;
-  margin-left: 10px;
-  margin-top: 20px;
+}
+
+.todo-create:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .todo-create img {
-  width: 20px;
+  width: 16px;
   height: auto;
   margin: 0 20px 0 0;
 }

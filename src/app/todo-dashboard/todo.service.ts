@@ -9,7 +9,7 @@ import { environment } from "src/environments/environment";
   providedIn: "root",
 })
 export class TodoService {
-  URL: string = environment.apiUrl;
+  URL: string = environment.apiUrl + "/todo";
 
   todoListSub = new BehaviorSubject<Todo[]>([]);
 
@@ -34,9 +34,6 @@ export class TodoService {
       }),
       tap((items) => {
         this.setTodoList(items);
-      }),
-      catchError((err) => {
-        throw "error in source. Detail: " + err;
       })
     );
   }

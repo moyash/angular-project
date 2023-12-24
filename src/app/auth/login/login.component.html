@@ -1,5 +1,11 @@
+<span
+  *ngIf="errorMessage"
+  class="m-4 p-4 rounded-xl bg-red-300 text-red-500 text-center"
+>
+  {{ errorMessage }}
+</span>
 <div class="container">
-  <h1>LOG IN</h1>
+  <h1 class="text-2xl">LOG IN</h1>
   <form [formGroup]="loginForm" (ngSubmit)="login()">
     <div class="valid-input">
       <input
@@ -12,8 +18,8 @@
         [appErrorMessage]="getUsernameErrorMessage"
         [ngClass]="{ 'error-icon': getUsernameInValid }"
       ></div>
-      <!-- <div class="errorMessage">
-        <div [ngClass]="{ 'error-icon': getLoginIdInValid }">
+      <div class="errorMessage">
+        <div [ngClass]="{ 'error-icon': getUsernameInValid }">
           <span *ngIf="loginForm.get('loginId')?.errors?.['required']">
             This field is required
           </span>
@@ -21,7 +27,7 @@
             Please enter no more than 64 characters.
           </span>
         </div>
-      </div> -->
+      </div>
     </div>
     <div class="valid-input">
       <input
@@ -34,7 +40,7 @@
         [appErrorMessage]="getPasswordErrorMessage"
         [ngClass]="{ 'error-icon': getPasswordInValid }"
       ></div>
-      <!-- <div class="errorMessage">
+      <div class="errorMessage">
         <div
           *ngIf="
             !loginForm.get('password')?.valid &&
@@ -48,7 +54,7 @@
             Please enter no more than 64 characters.
           </span>
         </div>
-      </div> -->
+      </div>
     </div>
     <button
       type="submit"

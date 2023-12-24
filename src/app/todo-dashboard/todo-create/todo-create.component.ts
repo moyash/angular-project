@@ -17,6 +17,8 @@ export class TodoCreateComponent implements OnInit {
     content: new FormControl(""),
   });
 
+  isCanceled: boolean = false;
+
   constructor(private todoService: TodoService, private router: Router) {}
 
   ngOnInit(): void {
@@ -41,16 +43,22 @@ export class TodoCreateComponent implements OnInit {
       content: description,
       status: TodoStatus.NotStarted,
     };
-    this.todoService.createTodo(target).subscribe(
-      (res) => {
-        console.log("res:", res);
-      },
-      (error) => {
-        console.log("error: ", error);
-      }
-    );
+    if (!this.isCanceled) {
+      this.todoService.createTodo(target).subscribe(
+        (res) => {
+          console.log("res:", res);
+        },
+        (error) => {
+          console.log("error: ", error);
+        }
+      );
+    }
+
     this.router.navigate(["/todo"]);
   }
 
-  onCreateCancel() {}
+  onCreateCancel() {
+    console.log("create cancel");
+    this.isCanceled = true;
+  }
 }

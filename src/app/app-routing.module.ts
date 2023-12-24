@@ -3,12 +3,12 @@ import { RouterModule, Routes } from "@angular/router";
 import { AppComponent } from "./app.component";
 import { authGuard } from "./auth/auth.guard";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
-import { TodoDashboardComponent } from "./todo-dashboard/todo-dashboard/todo-dashboard.component";
 
 const routes: Routes = [
   {
     path: "",
-    component: AppComponent /*, canActivate: [authGuard]*/,
+    component: AppComponent,
+    canActivate: [authGuard],
   },
   {
     path: "main",
@@ -24,15 +24,22 @@ const routes: Routes = [
         (m) => m.HomepageDashboardModule
       ),
   },
-  // {
-  //   path: "login",
-  //   loadChildren: () => import("./auth/auth.module").then((m) => m.AuthModule),
-  // },
+  {
+    path: "login",
+    loadChildren: () => import("./auth/auth.module").then((m) => m.AuthModule),
+  },
   {
     path: "todo",
     loadChildren: () =>
       import("./todo-dashboard/todo-dashboard.module").then(
         (m) => m.TodoDashboardModule
+      ),
+  },
+  {
+    path: "practice",
+    loadChildren: () =>
+      import("./practice-dashboard/practice-dashboard.module").then(
+        (m) => m.PracticeDashboardModule
       ),
   },
   { path: "**", component: PageNotFoundComponent },

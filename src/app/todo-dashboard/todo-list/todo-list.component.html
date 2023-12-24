@@ -1,6 +1,6 @@
 <div class="container">
   <app-todo
-    *ngFor="let todoEl of todoList"
+    *ngFor="let todoEl of currentTodoList"
     [todo]="todoEl"
     [routerLink]="[todoEl.id]"
   ></app-todo>
