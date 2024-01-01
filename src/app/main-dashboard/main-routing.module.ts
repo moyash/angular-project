@@ -5,7 +5,7 @@ import { MainComponent } from "./main/main.component";
 import { authGuard } from "../auth/auth.guard";
 
 const mainRoutes: Routes = [
-  { path: "", component: MainComponent, canActivate: [authGuard] },
+  { path: "", component: MainComponent /*canActivate: [authGuard]*/ },
 ];
 
 @NgModule({

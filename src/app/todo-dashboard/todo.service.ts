@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Subject, catchError, map, take, tap } from "rxjs";
 import { TodoStatus } from "../constants/enums/todo-status.enum";
 import { environment } from "src/environments/environment";
+import { TodoSessionService } from "./todo-session.service";
 
 @Injectable({
   providedIn: "root",
@@ -21,13 +22,17 @@ export class TodoService {
     status: TodoStatus.NotStarted,
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private todoSession: TodoSessionService
+  ) {}
 
   setTodoList(todoList: Todo[]) {
     this.todoListSub.next(todoList);
   }
 
   fetchData() {
+    console.log(this.URL);
     return this.http.get<Todo[]>(this.URL).pipe(
       map((items) => {
         return items;

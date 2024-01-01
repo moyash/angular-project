@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: "",
     component: AppComponent,
-    canActivate: [authGuard],
+    // canActivate: [authGuard],
   },
   {
     path: "main",
@@ -24,10 +24,10 @@ const routes: Routes = [
         (m) => m.HomepageDashboardModule
       ),
   },
-  {
-    path: "login",
-    loadChildren: () => import("./auth/auth.module").then((m) => m.AuthModule),
-  },
+  // {
+  //   path: "login",
+  //   loadChildren: () => import("./auth/auth.module").then((m) => m.AuthModule),
+  // },
   {
     path: "todo",
     loadChildren: () =>
