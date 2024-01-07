@@ -4,7 +4,7 @@ import { TodoStatus } from "src/app/constants/enums/todo-status.enum";
 import { FormControl, FormGroup } from "@angular/forms";
 import { TodoService } from "../todo.service";
 import { ActivatedRoute, Params, Router } from "@angular/router";
-import { DialogService } from "../dialog.service";
+import { DialogService } from "../../common/dialog/dialog.service";
 import { Observable, Subscription } from "rxjs";
 
 @Component({
@@ -90,14 +90,16 @@ export class TodoEditComponent implements OnInit {
 
   canDeactivate(): Observable<boolean> | boolean {
     var isChanged = false;
+
     if (this.todo?.title !== this.editForm.value.title) isChanged = true;
     if (this.todo?.author !== this.editForm.value.author) isChanged = true;
     if (this.todo?.content !== this.editForm.value.content) isChanged = true;
     if (this.todo?.status.toString() !== this.editForm.value.status)
       isChanged = true;
 
-    if (isChanged && this.isCanceled)
+    if (isChanged && this.isCanceled) {
       return this.dialogService.confirm("変更を取り消しますか？");
+    }
     return true;
   }
 

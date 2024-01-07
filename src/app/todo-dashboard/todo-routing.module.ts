@@ -13,7 +13,7 @@ const todoRoutes: Routes = [
   {
     path: "",
     component: TodoDashboardComponent,
-    canActivate: [authGuard],
+    // canActivate: [authGuard],
     resolve: { todo: todoListResolver },
     runGuardsAndResolvers: "always",
     children: [

@@ -3,11 +3,11 @@ import {
   CanDeactivateFn,
   RouterStateSnapshot,
 } from "@angular/router";
+import { MainComponent } from "../main.component";
 import { Observable } from "rxjs";
-import { TodoEditComponent } from "../todo-edit/todo-edit.component";
 
-export const editCanDeactivateGuard: CanDeactivateFn<TodoEditComponent> = (
-  component: TodoEditComponent,
+export const logoutCanDeactivateGuard: CanDeactivateFn<MainComponent> = (
+  component: MainComponent,
   route: ActivatedRouteSnapshot,
   state: RouterStateSnapshot
 ): Observable<boolean> | boolean => {

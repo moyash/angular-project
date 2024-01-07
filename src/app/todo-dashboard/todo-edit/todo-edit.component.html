@@ -1,5 +1,5 @@
 <div class="container">
-  <form [formGroup]="editForm" (ngSubmit)="onEditDone()">
+  <form [formGroup]="editForm">
     <div class="wrapper">
       <label for="title">Title</label>
       <input id="title" type="text" formControlName="title" />
@@ -23,10 +23,17 @@
       </select>
     </div>
     <div class="button-container">
-      <button type="submit" class="edit" [disabled]="!editForm.valid">
-        Edit
-      </button>
-      <button class="cancel" (click)="onEditCancel()">Cancel</button>
+      <lib-sk-primary-button
+        class="ml-5 mr-5"
+        type="submit"
+        [title]="'Edit'"
+        (click)="onEditDone()"
+      ></lib-sk-primary-button>
+      <lib-sk-danger-button
+        class="ml-5 mr-5"
+        [title]="'Cancel'"
+        (click)="onEditCancel()"
+      ></lib-sk-danger-button>
     </div>
   </form>
 </div>

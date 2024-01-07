@@ -18,16 +18,23 @@ const routes: Routes = [
       ),
   },
   {
+    path: "aws-architecture",
+    loadChildren: () =>
+      import(
+        "./aws-architecture-dashboard/aws-architecture-dashboard.module"
+      ).then((m) => m.AwsArchitectureDashboardModule),
+  },
+  {
     path: "homepage",
     loadChildren: () =>
       import("./homepage-dashboard/homepage-dashboard.module").then(
         (m) => m.HomepageDashboardModule
       ),
   },
-  // {
-  //   path: "login",
-  //   loadChildren: () => import("./auth/auth.module").then((m) => m.AuthModule),
-  // },
+  {
+    path: "login",
+    loadChildren: () => import("./auth/auth.module").then((m) => m.AuthModule),
+  },
   {
     path: "todo",
     loadChildren: () =>

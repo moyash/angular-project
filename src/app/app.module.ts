@@ -10,6 +10,7 @@ import { TodoDashboardModule } from "./todo-dashboard/todo-dashboard.module";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { TokenInterceptor } from "./auth/interceptor/token-interceptor";
 import { CookieInterceptor } from "./auth/interceptor/cookie.interceptor";
+import { SkAmLibModule } from "sk-am-lib";
 
 @NgModule({
   declarations: [AppComponent, PageNotFoundComponent],

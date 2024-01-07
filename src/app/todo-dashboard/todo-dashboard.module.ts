@@ -9,6 +9,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { TodoEditComponent } from "./todo-edit/todo-edit.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { TodoCreateComponent } from "./todo-create/todo-create.component";
+import { SkAmLibModule } from "sk-am-lib";
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { TodoCreateComponent } from "./todo-create/todo-create.component";
     FormsModule,
     ReactiveFormsModule,
     TodoRoutingModule,
+    SkAmLibModule,
   ],
 })
 export class TodoDashboardModule {}

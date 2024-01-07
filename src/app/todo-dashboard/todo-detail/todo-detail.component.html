@@ -20,7 +20,16 @@
   <div>created by: {{ todo?.author }}</div>
   <div class="content">Content: {{ todo?.content }}</div>
 
-  <button (click)="onEdit()">Edit</button>
-  <button (click)="onDelete()">Delete</button>
+  <lib-sk-primary-button
+    class="m-5"
+    type="submit"
+    [title]="'Edit'"
+    (click)="onEdit()"
+  ></lib-sk-primary-button>
+  <lib-sk-danger-button
+    class="m-5"
+    [title]="'Delete'"
+    (click)="onDelete()"
+  ></lib-sk-danger-button>
 </div>
 <router-outlet></router-outlet>
