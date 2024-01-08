@@ -46,7 +46,7 @@ input:focus {
 
 input.ng-touched.ng-invalid {
   border: none;
-  border-botom: 1px solid #ff0033;
+  border-bottom: 1px solid #ff0033;
 }
 
 .error-icon {
