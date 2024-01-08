@@ -8,7 +8,8 @@ import { logoutCanDeactivateGuard } from "./main/guard/logout-can-deactivate.gua
 const mainRoutes: Routes = [
   {
     path: "",
-    component: MainComponent /*canActivate: [authGuard]*/,
+    component: MainComponent,
+    canActivate: [authGuard],
     canDeactivate: [logoutCanDeactivateGuard],
   },
 ];
